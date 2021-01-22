@@ -4,7 +4,11 @@ import "components/Application.scss";
 import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import axios from "axios";
-import {getAppointmentsForDay, getInterview } from "helpers/selectors";
+import {
+  getAppointmentsForDay,
+  getInterviewersForDay,
+  getInterview,
+} from "helpers/selectors";
 
 export default function Application(props) {
   //  const [day, setDay] = useState("Monday");
@@ -16,17 +20,6 @@ export default function Application(props) {
     interviewers: {},
   });
 
-  const dailyAppts = getAppointmentsForDay(state, state.day);
-
-
-
-  const appts = dailyAppts.map((appt) => {
-    const interview = getInterview(state, appt.interview);
-    return (
-      <Appointment key={appt.id} id={appt.id} time={appt.time} interview={interview} />
-    )
-  }); // this adds appt. to every key
-
   const setDay = (day) => setState({ ...state, day });
 
   useEffect(() => {
@@ -35,7 +28,6 @@ export default function Application(props) {
       axios.get("http://localhost:8001/api/appointments"),
       axios.get("http://localhost:8001/api/interviewers"),
     ]).then((all) => {
-      console.log(all);
       setState((prev) => ({
         ...prev,
         days: all[0].data,
@@ -45,7 +37,37 @@ export default function Application(props) {
     });
   }, []);
 
-  console.log(state.interviewers)
+  const dailyAppts = getAppointmentsForDay(state, state.day);
+  const dailyInterviewers = getInterviewersForDay(state, state.day);
+
+  function bookInterview(id, interview) {
+    console.log("bookInterview . .", id, interview);
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview },
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+    console.log(id);
+    return axios.put(`http://localhost:8001/api/appointments/${id}`, appointment) // how does passing this key:val pair work??
+    .then(setState({...state, appointments, })) // what does all of the above do
+  }
+
+  const appts = dailyAppts.map((appt) => {
+    const interview = getInterview(state, appt.interview);
+    return (
+      <Appointment
+        key={appt.id}
+        id={appt.id}
+        time={appt.time}
+        interview={interview}
+        interviewers={dailyInterviewers}
+        bookInterview={bookInterview}
+      />
+    );
+  });
 
   return (
     <main className="layout">
