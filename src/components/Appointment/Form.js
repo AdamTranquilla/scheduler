@@ -21,8 +21,14 @@ export default function Form(props) {
   const [error, setError] = useState("");
 
   function validate() {
-    if (name === "") {
+    if (name === "" && interviewer === null) {
+      setError("Student name and Instructor selection cannot be blank");
+      return;
+    } else if (name === "") {
       setError("Student name cannot be blank");
+      return;
+    } else if (interviewer === null) {
+      setError("Instructor selection cannot be blank");
       return;
     }
     setError("");
@@ -44,12 +50,22 @@ export default function Form(props) {
           />
           <section className="appointment__validation">{error}</section>
         </form>
-        <InterviewerList value={interviewer} interviewers={props.interviewers} onChange={setInterviewer} />
+        <InterviewerList
+          value={interviewer}
+          interviewers={props.interviewers}
+          onChange={setInterviewer}
+        />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={cancel}> Cancel </Button>
-          <Button confirm onClick={validate}> Save </Button> 
+          <Button danger onClick={cancel}>
+            {" "}
+            Cancel{" "}
+          </Button>
+          <Button confirm onClick={validate}>
+            {" "}
+            Save{" "}
+          </Button>
           {/* changed from save to validate and test*/}
         </section>
       </section>
