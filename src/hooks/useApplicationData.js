@@ -36,11 +36,11 @@ export default function useApplicationData(initial) {
     }
     return openSpots;
   }
-  
+
   function displaySpots(days, appointments) {
-    const spots = days.map(day => ({
+    const spots = days.map((day) => ({
       ...day,
-      spots: spotsRemaining(day, appointments)
+      spots: spotsRemaining(day, appointments),
     }));
     return spots;
   }
@@ -58,8 +58,8 @@ export default function useApplicationData(initial) {
     const days = displaySpots(state.days, appointments);
 
     return axios
-      .put(`/api/appointments/${id}`, appointment) // how does passing this key:val pair work??
-      .then(setState({ ...state, days, appointments })); // what does all of the above do
+      .put(`/api/appointments/${id}`, appointment)
+      .then(setState({ ...state, days, appointments }));
   }
 
   function cancelInterview(id) {

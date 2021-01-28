@@ -1,12 +1,12 @@
 import React from "react";
-import classNames from 'classnames/bind'; //why does this work???
+import classNames from 'classnames/bind'; 
 import "components/DayListItem.scss";
 
 export default function DayListItem(props) {
 
   const dayClass = classNames("day-list__item", {
-    "day-list__item--selected": props.selected, //if props.confrim is true then it is added to the string after button
-    "day-list__item--full": !props.spots // do this for the --styles!
+    "day-list__item--selected": props.selected,
+    "day-list__item--full": !props.spots
   });
 
   const formatSpots = (spots) => {

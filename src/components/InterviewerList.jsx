@@ -11,7 +11,7 @@ function InterviewerList(props) {
         key={value.id}
         name={value.name}
         avatar={value.avatar}
-        selected={value.id === props.value} // why by id?
+        selected={value.id === props.value}
         onChange={(event) => props.onChange(value.id)}
       />
     );
@@ -24,12 +24,9 @@ function InterviewerList(props) {
   );
 }
 
-// changing interviewer -> value, and setInterviewer to onChange
-// why not do this to DayList?
 
-// Makes sure that interviewers prop is an Array and that it is required
 InterviewerList.propTypes = {
-  interviewers: PropTypes.array.isRequired // chained two forced checks
+  interviewers: PropTypes.array.isRequired
 }
 
 

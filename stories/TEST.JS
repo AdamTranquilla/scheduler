@@ -4,12 +4,12 @@ import Button from "components/Button";
 export default function Form(props) {
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  // Resets Form
+
   const reset = () => {
     setName("");
     setInterviewer(null);
   };
-  // calls reset on cancel
+
   const cancel = () => {
     reset();
     props.onCancel();
@@ -25,9 +25,7 @@ export default function Form(props) {
             type="text"
             value={name}
             placeholder="Enter Student Name"
-            /*
-          This must be a controlled component
-        */
+
           />
         </form>
         <InterviewerList

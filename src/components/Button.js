@@ -1,12 +1,12 @@
 import React from "react";
 
 import "components/Button.scss";
-import classNames from 'classnames/bind'; //why does this work???
+import classNames from 'classnames/bind';
 
 
 export default function Button(props) {
   const buttonClass = classNames("button", {
-    "button--confirm": props.confirm, //if props.confrim is true then it is added to the string after button
+    "button--confirm": props.confirm,
     "button--danger": props.danger
   });
 
