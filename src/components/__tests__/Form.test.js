@@ -13,8 +13,8 @@ describe("Form", () => {
     {
       id: 1,
       name: "Sylvia Palmer",
-      avatar: "https://i.imgur.com/LpaY82x.png"
-    }
+      avatar: "https://i.imgur.com/LpaY82x.png",
+    },
   ];
 
   it("renders without student name if not provided", () => {
@@ -39,7 +39,9 @@ describe("Form", () => {
 
     fireEvent.click(getByText("Save"));
 
-    expect(getByText(/Student name and Instructor selection cannot be blank/i)).toBeInTheDocument();
+    expect(
+      getByText(/Student name and Instructor selection cannot be blank/i)
+    ).toBeInTheDocument();
     expect(onSave).not.toHaveBeenCalled();
   });
 
@@ -57,7 +59,7 @@ describe("Form", () => {
     fireEvent.click(getByText("Save"));
 
     fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { value: "Lydia Miller-Jones" }
+      target: { value: "Lydia Miller-Jones" },
     });
 
     fireEvent.click(getByText("Cancel"));
