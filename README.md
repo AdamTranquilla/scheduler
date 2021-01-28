@@ -20,24 +20,23 @@ Interview Scheduler is a single-page React app that allows users to book, edit, 
 !["Delete Confirmation"](https://github.com/AdamTranquilla/scheduler/blob/master/public/images/deleting.png?raw=true)
 
 ## Dependencies
-  - axios
-  - classnames
-  - normalize.css
-  - react
-  - react-dom
-  - react-scripts
+* axios
+* classnames
+* normalize.css
+* react
+* react-dom
+* react-scripts
 
 ## Dev Dependencies
-  -  babel/core
-  -  storybook
-  -  testing-library/jest-dom
-  -  testing-library/react
-  -  testing-library/react-hooks
-  -  babel-loader
-  -  node-sass
-  -  prop-types
-  -  react-test-renderer
-
+* babel/core
+* storybook
+* testing-library/jest-dom
+* testing-library/react
+* testing-library/react-hooks
+* babel-loader
+* node-sass
+* prop-types
+* react-test-renderer
 
 ## Setup
 
