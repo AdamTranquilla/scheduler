@@ -2,7 +2,7 @@
 
 Interview Scheduler is a responsive signle page web app that allows users to book, edit, and cancel interviews. 
 
-### This app is deployed on [Netlify](https://interviewscheduler-lhl.netlify.app/) with a Heroku Backend. Feel free to check it out!
+This app is deployed on [Netlify](https://interviewscheduler-lhl.netlify.app/) with a Heroku Backend. Feel free to check it out!
 
 ## Stack
 
